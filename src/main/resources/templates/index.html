@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Inicio</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Inicio</h1>
+        <a th:href="@{/agregar}">Agregar libro</a>
+        <div th:if="${libros != null and !libros.empty}">
+            <table border="1">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>ISBN</th>
+                    <th>Autor</th>
+                    <th>No. páginas</th>
+                    <th>Estatus</th>
+                    <th>Comentarios</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+                <tr th:each="libro : ${libros}">
+                    <td th:text="${libro.idLibro}"></td>
+                    <td th:text="${libro.nombre}"></td>
+                    <td th:text="${libro.isbn}"></td>
+                    <td th:text="${libro.autor}"></td>
+                    <td th:text="${libro.noPaginas}"></td>
+                    <td th:text="${libro.estatus}"></td>
+                    <td th:text="${libro.comentarios}"></td>
+                    <td><a th:href="@{/editar/} + ${libro.idLibro}" th:text="Editar"/></td>
+                    <td><a th:href="@{/eliminar(idLibro=${libro.idLibro})}" th:text="Eliminar"/></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${libros == null or libros.empty}">
+            La lista de personas está vacía
+        </div>
+        
+    </body>
+</html>
