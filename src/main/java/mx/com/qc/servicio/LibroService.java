@@ -12,4 +12,5 @@ public interface LibroService {
     public void eliminar(Libro libro);
     
     public Libro encontrarLibro(Libro libro);
+    
 }

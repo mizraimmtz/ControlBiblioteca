@@ -3,14 +3,21 @@
     <head>
         <title>Inicio</title>
         <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
     </head>
     <body>
         <h1>Inicio</h1>
-        <a th:href="@{/agregar}">Agregar libro</a>
+        <a th:href="@{/agregar}" class="btn btn-success">Agregar libro</a>
         <div th:if="${libros != null and !libros.empty}">
-            <table border="1">
-                <tr>
-                    <th>Id</th>
+            <table>
+                
+                
+            </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                    <th>#</th>
                     <th>Nombre</th>
                     <th>ISBN</th>
                     <th>Autor</th>
@@ -20,22 +27,25 @@
                     <th>Editar</th>
                     <th>Eliminar</th>
                 </tr>
-                <tr th:each="libro : ${libros}">
-                    <td th:text="${libro.idLibro}"></td>
+                </thead>
+                <tbody>
+                    <tr th:each="libro : ${libros}">
+                    <td class="table-warning" th:text="${libro.idLibro}"></td>
                     <td th:text="${libro.nombre}"></td>
                     <td th:text="${libro.isbn}"></td>
                     <td th:text="${libro.autor}"></td>
                     <td th:text="${libro.noPaginas}"></td>
                     <td th:text="${libro.estatus}"></td>
                     <td th:text="${libro.comentarios}"></td>
-                    <td><a th:href="@{/editar/} + ${libro.idLibro}" th:text="Editar"/></td>
-                    <td><a th:href="@{/eliminar(idLibro=${libro.idLibro})}" th:text="Eliminar"/></td>
+                    <td><a class="btn btn-warning" th:href="@{/editar/} + ${libro.idLibro}" th:text="Editar"/></td>
+                    <td><a class="btn btn-danger" th:href="@{/eliminar(idLibro=${libro.idLibro})}" th:text="Eliminar"/></td>
                 </tr>
+                </tbody>
             </table>
         </div>
         <div th:if="${libros == null or libros.empty}">
             La lista de personas está vacía
         </div>
-        
+
     </body>
 </html>

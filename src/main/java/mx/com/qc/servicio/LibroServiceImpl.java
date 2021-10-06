@@ -36,4 +36,5 @@ public class LibroServiceImpl implements LibroService {
     public Libro encontrarLibro(Libro libro) {
         return libroDao.findById(libro.getIdLibro()).orElse(null);
     }
+
 }

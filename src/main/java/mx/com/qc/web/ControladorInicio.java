@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ControladorInicio {
     
     @Autowired
-    private LibroService plibroService;
+    private LibroService libroServices;
     
     @GetMapping("/")
     public String inicio(Model model){
-        var libros = plibroService.listarLibros();
+        var libros = libroServices.listarLibros();
         log.info("ejecutando el controlador Spring MVC");
         model.addAttribute("libros", libros);
         return "index";
@@ -31,20 +31,20 @@ public class ControladorInicio {
     
     @PostMapping("/guardar")
     public String guardar(Libro libro){
-        plibroService.guardar(libro);
+        libroServices.guardar(libro);
         return "redirect:/";
     }
     
     @GetMapping("/editar/{idLibro}")
     public String editar(Libro libro, Model model){
-        libro = plibroService.encontrarLibro(libro);
+        libro = libroServices.encontrarLibro(libro);
         model.addAttribute("libro", libro);
         return "modificar";
     }
     
     @GetMapping("/eliminar")
     public String eliminar(Libro libro){
-        plibroService.eliminar(libro);
+        libroServices.eliminar(libro);
         return "redirect:/";
     }
 }
