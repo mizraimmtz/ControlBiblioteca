@@ -12,12 +12,14 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Empleado {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
-    private Long idLibro;
+    @Column(name = "id_empleado")
+    private Long idEmpleado;
+    
+    private String username;
     
     private String nombre;
     

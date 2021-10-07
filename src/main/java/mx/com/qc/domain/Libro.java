@@ -4,7 +4,6 @@ import java.util.List;
 import javax.persistence.*;
 import lombok.Data;
 
-
 @Data
 @Entity
 @Table(name = "libros")
@@ -24,7 +23,9 @@ public class Libro {
     @Column(name = "no_paginas")
     private int noPaginas;
 
-    private int estatus;
+    @ManyToOne
+    @JoinColumn(name = "estatus")
+    private Estatus estatus;
 
     private String comentarios;
 
