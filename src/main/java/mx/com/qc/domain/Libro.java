@@ -1,5 +1,6 @@
 package mx.com.qc.domain;
 
+import java.util.List;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -23,7 +24,8 @@ public class Libro {
     @Column(name = "no_paginas")
     private int noPaginas;
 
-    private String estatus;
+    private int estatus;
 
     private String comentarios;
+
 }

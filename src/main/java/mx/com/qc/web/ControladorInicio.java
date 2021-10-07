@@ -1,7 +1,10 @@
 package mx.com.qc.web;
 
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
+import mx.com.qc.domain.Estatus;
 import mx.com.qc.domain.Libro;
+import mx.com.qc.servicio.IEstatusService;
 import mx.com.qc.servicio.LibroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,9 @@ public class ControladorInicio {
     @Autowired
     private LibroService libroServices;
     
+    @Autowired
+    private IEstatusService estatusService;
+    
     @GetMapping("/")
     public String inicio(Model model){
         var libros = libroServices.listarLibros();
@@ -25,8 +31,11 @@ public class ControladorInicio {
     }
     
     @GetMapping("/agregar")
-    public String agregar(Libro libro){
-        return "modificar";
+    public String agregar(Model model, Libro libro){
+        List<Estatus> listEstatus = estatusService.listaEstatus();
+        model.addAttribute("libro", libro);
+        model.addAttribute("estatus", listEstatus);
+        return "agregar";
     }
     
     @PostMapping("/guardar")
@@ -37,8 +46,10 @@ public class ControladorInicio {
     
     @GetMapping("/editar/{idLibro}")
     public String editar(Libro libro, Model model){
+        List<Estatus> listEstatus = estatusService.listaEstatus();
         libro = libroServices.encontrarLibro(libro);
         model.addAttribute("libro", libro);
+        model.addAttribute("estatus", listEstatus);
         return "modificar";
     }
     
