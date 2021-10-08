@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class LibroServiceImpl implements LibroService {
+public class LibroServiceImpl implements ILibroService {
 
     @Autowired
     private LibroDao libroDao;

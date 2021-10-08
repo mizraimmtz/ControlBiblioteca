@@ -5,19 +5,19 @@ import lombok.extern.slf4j.Slf4j;
 import mx.com.qc.domain.Estatus;
 import mx.com.qc.domain.Libro;
 import mx.com.qc.servicio.IEstatusService;
-import mx.com.qc.servicio.LibroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import mx.com.qc.servicio.ILibroService;
 
 @Controller
 @Slf4j
 public class ControladorInicio {
     
     @Autowired
-    private LibroService libroService;
+    private ILibroService libroService;
     
     @Autowired
     private IEstatusService estatusService;

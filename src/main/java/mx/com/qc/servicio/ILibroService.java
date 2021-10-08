@@ -3,7 +3,7 @@ package mx.com.qc.servicio;
 import java.util.List;
 import mx.com.qc.domain.Libro;
 
-public interface LibroService {
+public interface ILibroService {
     
     public List<Libro> listarLibros();
     

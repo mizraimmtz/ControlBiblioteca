@@ -3,7 +3,7 @@ package mx.com.qc.servicio;
 import java.util.List;
 import mx.com.qc.domain.Usuario;
 
-public interface UsuarioService {
+public interface IUsuarioService {
     
     public List<Usuario> listarUsuarios();
     

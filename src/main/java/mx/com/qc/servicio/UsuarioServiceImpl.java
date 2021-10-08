@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-public class UsuarioServiceImpl implements UsuarioService {
+public class UsuarioServiceImpl implements IUsuarioService {
 
     @Autowired
     private UsuarioDao usuarioDao;
