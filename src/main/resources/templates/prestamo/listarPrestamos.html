@@ -11,34 +11,34 @@
         <a th:href="@{/prestamo/listarPrestamos/agregar}" class="btn btn-success">Agregar préstamo</a>
         <a th:href="@{/}" class="btn btn-danger">Regresar a la tabla de libros</a>
 
-
-
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Empleado que dio el prestamo</th>
-                    <th>Usuario que solicito el prestamo</th>
-                    <th>Libro prestado</th>
-                    <th>Fecha de salida</th>
-                    <th>Fecha de devolución</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="prestamo : ${prestamos}">
-                    <td class="table-warning" th:text="${prestamo.idPrestamo}"></td>
-                    <td th:text="${prestamo.empleados}"></td>
-                    <td th:text="${prestamo.usuarios}"></td>
-                    <td th:text="${prestamo.libros}"></td>
-                    <td th:text="${prestamo.fechaSalida}"></td>
-                    <td th:text="${prestamo.fechaDevolucion}"></td>
-                    <td><a class="btn btn-warning" th:href="@{/prestamo/listarPrestamos/editar/} + ${prestamo.idPrestamo}" th:text="Editar"/></td>
-                    <td><a class="btn btn-danger" th:href="@{/prestamo/listarPrestamos/eliminar(idPrestamo=${prestamo.idPrestamo})}" th:text="Eliminar"/></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="container">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Empleado que dio el prestamo</th>
+                        <th>Usuario que solicito el prestamo</th>
+                        <th>Libro prestado</th>
+                        <th>Fecha de salida</th>
+                        <th>Fecha de devolución</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="prestamo : ${prestamos}">
+                        <td class="table-warning" th:text="${prestamo.idPrestamo}"></td>
+                        <td th:text="${prestamo.empleados}"></td>
+                        <td th:text="${prestamo.usuarios}"></td>
+                        <td th:text="${prestamo.libros}"></td>
+                        <td th:text="${prestamo.fechaSalida}"></td>
+                        <td th:text="${prestamo.fechaDevolucion}"></td>
+                        <td><a class="btn btn-warning" th:href="@{/prestamo/listarPrestamos/editar/} + ${prestamo.idPrestamo}" th:text="Editar"/></td>
+                        <td><a class="btn btn-danger" th:href="@{/prestamo/listarPrestamos/eliminar(idPrestamo=${prestamo.idPrestamo})}" th:text="Eliminar"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
 
     </div>

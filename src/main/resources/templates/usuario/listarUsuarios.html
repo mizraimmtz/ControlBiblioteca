@@ -9,9 +9,9 @@
     <body>
         <h1>Control de usuarios</h1>
         <a th:href="@{/usuario/listarUsuarios/agregar}" class="btn btn-success">Agregar usuario</a>
-        <a th:href="@{/}" class="btn btn-danger">Regresar</a>
+        <a th:href="@{/}" class="btn btn-danger">Regresar a tabla de biblioteca</a>
         
-        <div th:if="${usuarios != null and !usuarios.empty}">
+        <div th:if="${usuarios != null and !usuarios.empty}" class="container">
 
             <table class="table table-bordered">
                 <thead>

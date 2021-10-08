@@ -11,17 +11,18 @@
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-ms-8">
-                    <h4>Buscar libros por Nombre</h4>
-                    <form th:action="@{/nombre}" th:object="${libro}" method="get">
-                        <input type="text" th:field="*{nombre}" class="form-control col-ms-4"/>
+                    <h4>Buscar libros por ISBN</h4>
+                    <form th:action="@{/isbn}" th:object="${libro}" method="get">
+                        <input type="text" th:field="*{isbn}" class="form-control col-ms-4"/>
                         <button type="submit" class="btn btn-success">Buscar</button>
-                        <a class="btn btn-danger" th:href="@{/}">Regresar</a>
+                        <a th:href="@{/}" class="btn btn-danger">Regresar</a>
                     </form>
-                    
-                     
+
+
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Nombre</th>
                                 <th>ISBN</th>
                                 <th>Autor</th>
@@ -31,16 +32,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="libro:${librosPorNombre}">
-                                <td th:text="${libro.nombre}"></td>
-                                <td th:text="${libro.isbn}"></td>
-                                <td th:text="${libro.autor}"></td>
-                                <td th:text="${libro.noPaginas}"></td>
-                                <td th:text="${libro.estatus.estatusLibro}"></td>
-                                <td th:text="${libro.comentarios}"></td>
+                            <tr th:each="isbn:${librosPorIsbn}">
+                                <td th:text="${isbn.idLibro}"></td>
+                                <td th:text="${isbn.nombre}"></td>
+                                <td th:text="${isbn.isbn}"></td>
+                                <td th:text="${isbn.autor}"></td>
+                                <td th:text="${isbn.noPaginas}"></td>
+                                <td th:text="${isbn.estatus.estatusLibro}"></td>
+                                <td th:text="${isbn.comentarios}"></td>
                             </tr>
                         </tbody>
+
                     </table>
+
                 </div>
             </div>
         </div>

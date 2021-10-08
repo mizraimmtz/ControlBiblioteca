@@ -42,5 +42,9 @@ public class LibroServiceImpl implements ILibroService {
         return libroDao.findByNombre(nombre);
     }
 
+    @Override
+    public List<Libro> buscarPorIsbn(String isbn) {
+        return libroDao.findByIsbn(isbn);
+    }
 
 }

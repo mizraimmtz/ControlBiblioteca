@@ -17,60 +17,71 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @Slf4j
 public class ControladorInicio {
-    
+
     @Autowired
     private ILibroService libroService;
-    
+
     @Autowired
     private IEstatusService estatusService;
-    
+
     @GetMapping("/")
-    public String inicio(Model model){
+    public String inicio(Model model) {
         var libros = libroService.listarLibros();
         log.info("ejecutando el controlador Spring MVC");
         model.addAttribute("libros", libros);
         return "index";
     }
-    
+
     @GetMapping("/agregar")
-    public String agregar(Model model, Libro libro){
+    public String agregar(Model model, Libro libro) {
         List<Estatus> listEstatus = estatusService.listaEstatus();
         model.addAttribute("libro", libro);
         model.addAttribute("estatus", listEstatus);
         return "agregar";
     }
-    
+
     @PostMapping("/guardar")
-    public String guardar(Libro libro){
+    public String guardar(Libro libro) {
         libroService.guardar(libro);
         return "redirect:/";
     }
-    
+
     @GetMapping("/editar/{idLibro}")
-    public String editar(Libro libro, Model model){
+    public String editar(Libro libro, Model model) {
         List<Estatus> listEstatus = estatusService.listaEstatus();
         libro = libroService.encontrarLibro(libro);
         model.addAttribute("libro", libro);
         model.addAttribute("estatus", listEstatus);
         return "modificar";
     }
-    
+
     @GetMapping("/eliminar")
-    public String eliminar(Libro libro){
+    public String eliminar(Libro libro) {
         libroService.eliminar(libro);
         return "redirect:/";
     }
-    
+
     @GetMapping("/nombresform")
-    public String nombresform (Model model){
+    public String nombresform(Model model) {
         model.addAttribute("libro", new Libro());
-        return "nombresform";
+        return "nombreform";
     }
-    
+
+    @GetMapping("/isbnsform")
+    public String isbnsform(Model model) {
+        model.addAttribute("libro", new Libro());
+        return "isbnform";
+    }
+
     @GetMapping("/nombre")
-    public String buscarPorNombre(@RequestParam String nombre, Model model, @ModelAttribute("libro") Libro libro){
+    public String buscarPorNombre(@RequestParam String nombre, Model model, @ModelAttribute("libro") Libro libro) {
         model.addAttribute("librosPorNombre", libroService.buscarPorNombre(nombre));
         return "nombreform";
     }
-    
+
+    @GetMapping("/isbn")
+    public String buscarPorIsbn(@RequestParam String isbn, Model model, @ModelAttribute("libro") Libro libro) {
+        model.addAttribute("librosPorIsbn", libroService.buscarPorIsbn(isbn));
+        return "isbnform";
+    }
 }

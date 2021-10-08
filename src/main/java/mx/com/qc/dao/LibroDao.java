@@ -7,4 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface LibroDao extends CrudRepository<Libro, Long>{
     
     List<Libro> findByNombre (String nombre);
+    
+    List<Libro> findByIsbn (String isbn);
 }
