@@ -37,4 +37,10 @@ public class LibroServiceImpl implements ILibroService {
         return libroDao.findById(libro.getIdLibro()).orElse(null);
     }
 
+    @Override
+    public List<Libro> buscarPorNombre(String nombre) {
+        return libroDao.findByNombre(nombre);
+    }
+
+
 }

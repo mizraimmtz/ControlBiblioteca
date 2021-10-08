@@ -11,7 +11,7 @@
 
         <div class="container mt-4">
             <div class="col-ms-6">
-                <form th:action="@{/prestamo/guardar}" method="post" th:object="${prestamo}">
+                <form th:action="@{/prestamo/listarPrestamos/guardar}" method="post" th:object="${prestamo}">
                     <input type="hidden" name="idPrestamo" th:field="*{idPrestamo}"/>
                     <div class="card">
                         <div class="card-header">
@@ -20,29 +20,39 @@
                         <div class="card-body">
                             <div class="form-group row">
                                 <label for="empleado">Empleado que genera el préstamo:</label>
-                                <select class="form-control" th:field="*{idEmpleado}"  id="dropPrestamo">
+                                <select class="form-control" th:field="*{empleados}"  id="dropPrestamo">
                                     <option value="0">-Seleciona el empleado-</option>
                                     <option th:each="empleado:${empleados}"
-                                            th:value="${empleado.idEmpleado}" th:text="${empleado.nombre}"></option>
+                                            th:value="${empleado.idEmpleado}" th:text="${empleado.nombre} + ' ' + ${empleado.apellido}"></option>
                                 </select>
                             </div>
                             
                             <div class="form-group row">
                                 <label for="usuario">Usuario que recibe el préstamo:</label>
-                                <select class="form-control" th:field="*{idUsuario}"  id="dropPrestamo">
+                                <select class="form-control" th:field="*{usuarios}"  id="dropPrestamo">
                                     <option value="0">-Seleciona el Usuario-</option>
                                     <option th:each="usuario:${usuarios}"
-                                            th:value="${usuario.idUsuario}" th:text="${usuario.nombre}"></option>
+                                            th:value="${usuario.idUsuario}" th:text="${usuario.nombre} + ' ' + ${usuario.apellido}"></option>
                                 </select>
                             </div>
                             
                             <div class="form-group row">
                                 <label for="usuario">Nombre del libro a prestar:</label>
-                                <select class="form-control" th:field="*{idLibro}"  id="dropPrestamo">
+                                <select class="form-control" th:field="*{libros}"  id="dropPrestamo">
                                     <option value="0">-Seleciona el Libro-</option>
                                     <option th:each="libro:${libros}"
                                             th:value="${libro.idLibro}" th:text="${libro.nombre}"></option>
                                 </select>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <label for="fechaSalida">Fecha de salida:</label>
+                                <input type="date" name="fechaSalida" th:field="*{fechaSalida}"/>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <label for="fechaDevolucion">Fecha devolución:</label>
+                                <input type="date" name="fechaDevolucion" th:field="*{fechaDevolucion}"/>
                             </div>
                             
                             <div class="form-group row">

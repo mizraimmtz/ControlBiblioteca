@@ -48,13 +48,13 @@ public class ControladorPrestamos {
         return "/prestamo/agregarPrestamo";
     }
     
-    @PostMapping("/guardar")
+    @PostMapping("/listarPrestamos/guardar")
     public String guardar(Prestamo prestamo){
         prestamoService.guardar(prestamo);
-        return "redirect:/";
+        return "redirect:/prestamo/listarPrestamos";
     }
     
-    @GetMapping("/editar/{idLibro}")
+    @GetMapping("/listarPrestamos/editar/{idPrestamo}")
     public String editar(Prestamo prestamo, Model model){
         List<Empleado> listEspleado = empleadoService.listarEmpleados();
         List<Usuario> listUsuario = usuarioService.listarUsuarios();
@@ -64,8 +64,13 @@ public class ControladorPrestamos {
         model.addAttribute("empleados", listEspleado);
         model.addAttribute("usuarios", listUsuario);
         model.addAttribute("libros", listLibro);
-        return "modificar";
+        return "/prestamo/agregarPrestamo";
     }
     
+    @GetMapping("/listarPrestamos/eliminar")
+    public String eliminar(Prestamo prestamo){
+        prestamoService.eliminar(prestamo);
+        return "redirect:/prestamo/listarPrestamos";
+    }
 
 }

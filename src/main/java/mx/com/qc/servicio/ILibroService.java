@@ -13,4 +13,5 @@ public interface ILibroService {
     
     public Libro encontrarLibro(Libro libro);
     
+    List<Libro> buscarPorNombre (String nombre);
 }

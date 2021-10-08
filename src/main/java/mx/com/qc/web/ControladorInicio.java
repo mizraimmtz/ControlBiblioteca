@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import mx.com.qc.servicio.ILibroService;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Slf4j
@@ -57,6 +59,18 @@ public class ControladorInicio {
     public String eliminar(Libro libro){
         libroService.eliminar(libro);
         return "redirect:/";
+    }
+    
+    @GetMapping("/nombresform")
+    public String nombresform (Model model){
+        model.addAttribute("libro", new Libro());
+        return "nombresform";
+    }
+    
+    @GetMapping("/nombre")
+    public String buscarPorNombre(@RequestParam String nombre, Model model, @ModelAttribute("libro") Libro libro){
+        model.addAttribute("librosPorNombre", libroService.buscarPorNombre(nombre));
+        return "nombreform";
     }
     
 }

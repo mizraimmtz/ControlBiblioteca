@@ -20,7 +20,8 @@
                     <th>Empleado que dio el prestamo</th>
                     <th>Usuario que solicito el prestamo</th>
                     <th>Libro prestado</th>
-                    <th>Ver detalles</th>
+                    <th>Fecha de salida</th>
+                    <th>Fecha de devolución</th>
                     <th>Editar</th>
                     <th>Eliminar</th>
                 </tr>
@@ -28,11 +29,13 @@
             <tbody>
                 <tr th:each="prestamo : ${prestamos}">
                     <td class="table-warning" th:text="${prestamo.idPrestamo}"></td>
-                    <td th:text="${prestamo.idEmpleado}"></td>
-                    <td th:text="${prestamo.idUsuario}"></td>
-                    <td th:text="${prestamo.idLibro}"></td>
-                    <td><a class="btn btn-warning" th:href="@{/editar/} + ${prestamo.idPrestamo}" th:text="Editar"/></td>
-                    <td><a class="btn btn-danger" th:href="@{/eliminar(idPrestamo=${prestamo.idPrestamo})}" th:text="Eliminar"/></td>
+                    <td th:text="${prestamo.empleados}"></td>
+                    <td th:text="${prestamo.usuarios}"></td>
+                    <td th:text="${prestamo.libros}"></td>
+                    <td th:text="${prestamo.fechaSalida}"></td>
+                    <td th:text="${prestamo.fechaDevolucion}"></td>
+                    <td><a class="btn btn-warning" th:href="@{/prestamo/listarPrestamos/editar/} + ${prestamo.idPrestamo}" th:text="Editar"/></td>
+                    <td><a class="btn btn-danger" th:href="@{/prestamo/listarPrestamos/eliminar(idPrestamo=${prestamo.idPrestamo})}" th:text="Eliminar"/></td>
                 </tr>
             </tbody>
         </table>
