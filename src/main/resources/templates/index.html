@@ -9,9 +9,10 @@
     <body>
         <h1>Biblioteca</h1>
         <a th:href="@{/agregar}" class="btn btn-success">Agregar libro</a>
-        <a th:href="@{/listar/listarEmpleados}" class="btn btn-success">Consultar empleados</a>
-        <a th:href="@{/usuario/listarUsuarios}" class="btn btn-success">Consultar Usuarios</a>
-        <a th:href="@{/prestamo/listarPrestamos}" class="btn btn-success">Consultar Usuarios</a>
+        <a th:href="@{/listar/listarEmpleados}" class="btn btn-info">Consultar empleados</a>
+        <a th:href="@{/usuario/listarUsuarios}" class="btn btn-info">Consultar Usuarios</a>
+        <a  class="btn btn-info">Consultar Préstamos</a>
+        <a  class="btn btn-primary">Buscar libro</a>
         <div th:if="${libros != null and !libros.empty}">
 
             <table class="table table-bordered">

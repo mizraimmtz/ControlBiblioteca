@@ -32,10 +32,10 @@ public class ControladorUsuarios {
         return "/usuario/modificarUsuarios";
     }
     
-    @PostMapping("/guardar")
+    @PostMapping("/listarUsuarios/guardar")
     public String guardar(Usuario usuario){
         usuarioService.guardar(usuario);
-        return "redirect:/";
+        return "redirect:/usuario/listarUsuarios";
     }
     
     @GetMapping("/listarUsuarios/editar/{idUsuario}")

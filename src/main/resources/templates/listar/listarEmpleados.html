@@ -9,7 +9,7 @@
     <body>
         <h1>Control de empleados</h1>
         <a th:href="@{/listar/listarEmpleados/agregar}" class="btn btn-success">Agregar Empleado</a>
-        <a th:href="@{/}" class="btn btn-danger">Regresar</a>
+        <a th:href="@{/}" class="btn btn-danger">Regresar a tabla de biblioteca</a>
         <div th:if="${empleados != null and !empleados.empty}">
 
             <table class="table table-bordered">

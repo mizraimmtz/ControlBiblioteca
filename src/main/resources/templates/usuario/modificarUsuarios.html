@@ -1,10 +1,52 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Datos del Usuario</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
     </head>
     <body>
-        <div>TODO write content</div>
+        <h1>Datos del Usuario</h1>
+        <a class="btn btn-danger" th:href="@{/usuario/listarUsuarios}">Regresar a tabla de usuarios</a>
+
+        <div class="container mt-4">
+            <div class="col-ms-6">
+                <form th:action="@{/usuario/listarUsuarios/guardar}" method="post" th:object="${usuario}">
+                    <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Datos de Usuario</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="nombre">Nombre de usuario:</label>
+                                <input type="text" name="nombre" th:field="*{nombre}"/>
+                            </div>
+                            <div class="form-group row">
+                                <label for="apellido">Apellido:</label>
+                                <input type="text" name="apellido" th:field="*{apellido}"/>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" th:field="*{email}"/>
+                            </div>
+                            <div class="form-group row">
+                                <label for="direccion">Dirección</label>
+                                <input type="text" name="direccion" th:field="*{direccion}"/>
+                            </div>
+                            <div class="form-group row">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" name="telefono" th:field="*{telefono}"/>
+                            </div>
+                            <div class="form-group row">
+                                <input type="submit" name="guardar" value="Guardar"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        -->
+
     </body>
 </html>

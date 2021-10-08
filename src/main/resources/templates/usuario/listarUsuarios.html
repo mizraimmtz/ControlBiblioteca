@@ -35,7 +35,7 @@
                         <td th:text="${usuario.direccion}"></td>
                         <td th:text="${usuario.telefono}"></td> 
                         <td><a class="btn btn-warning" th:href="@{/usuario/listarUsuarios/editar/} + ${usuario.idUsuario}" th:text="Editar"/></td>
-                        <td><a class="btn btn-danger" th:href="@{/usuario/listarUsarios/eliminar(idUsuario=${usuario.idUsuario})}" th:text="Eliminar"/></td>
+                        <td><a class="btn btn-danger" th:href="@{/usuario/listarUsuarios/eliminar(idUsuario=${usuario.idUsuario})}" th:text="Eliminar"/></td>
                     </tr>
                 </tbody>
             </table>
